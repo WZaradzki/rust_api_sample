@@ -1,7 +1,10 @@
-use diesel::Queryable;
+use diesel::{Queryable, Insertable};
+use serde::{Deserialize, Serialize};
 
-#[derive(Queryable)]
-pub struct UserModel {
+use crate::schema::users;
+
+#[derive(Debug, Clone, Serialize, Deserialize, Queryable, Insertable)]
+pub struct User {
     pub id: i32,
     pub firstname: String,
     pub lastname: String,
