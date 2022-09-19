@@ -1,7 +1,5 @@
 use actix_web::{web, App, HttpServer};
-
-mod handlers;
-mod routes;
+use backend::routes;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {

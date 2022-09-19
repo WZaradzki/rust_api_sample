@@ -1,17 +1,16 @@
 pub mod handlers;
+pub mod models;
 pub mod routes;
+pub mod schema;
 
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
+use diesel::prelude::*;
+use dotenvy::dotenv;
+use std::env;
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+pub fn create_connection() -> MysqlConnection {
+    dotenv().ok();
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
+    let database_url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
+    MysqlConnection::establish(&database_url)
+        .unwrap_or_else(|_| panic!("Error connecting to {}", database_url))
 }
