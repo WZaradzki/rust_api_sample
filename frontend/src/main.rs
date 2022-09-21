@@ -1,12 +1,9 @@
-// mod components;
-// mod content;
-// mod generator;
 mod pages;
 mod components;
 mod router;
-use components::layouts::public;
+use components::wrappers::app;
 
 fn main() {
     wasm_logger::init(wasm_logger::Config::new(log::Level::Trace));
-    yew::start_app::<public::LayoutPublic>();
+    yew::start_app::<app::AppWrapper>();
 }

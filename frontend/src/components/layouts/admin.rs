@@ -6,9 +6,9 @@ pub struct ListProps {
     pub children: Children,
 }
 
-pub struct LayoutPublic;
+pub struct LayoutAdmin;
 
-impl Component for LayoutPublic {
+impl Component for LayoutAdmin {
     type Message = ();
     type Properties = ListProps;
 
@@ -18,7 +18,7 @@ impl Component for LayoutPublic {
 
     fn view(&self, ctx: &Context<Self>) -> Html {
         html! {
-            <div class="public-layout">
+            <div class="admin-layout">
                 { for ctx.props().children.iter() }
             </div>
         }
